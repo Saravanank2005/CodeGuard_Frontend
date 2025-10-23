@@ -2,6 +2,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 
@@ -12,7 +13,13 @@ export default function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <i className="fas fa-shield-alt"></i>
+        <Image 
+          src="/logo.jpg" 
+          alt="CodeGuard Logo" 
+          width={40} 
+          height={40}
+          style={{ borderRadius: '8px', objectFit: 'cover' }}
+        />
         <span>CodeGuard</span>
       </div>
       <nav className="nav">

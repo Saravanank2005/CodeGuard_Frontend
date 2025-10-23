@@ -16,9 +16,21 @@ export default function ManagePage() {
       const data = await getSubmissions()
       setSubmissions(data)
       
-      const totalSize = data.reduce((sum, sub) => sum + (sub.size || 0), 0)
+      // Calculate total files and size from all submissions
+      let totalFilesCount = 0
+      let totalSize = 0
+      
+      data.forEach(sub => {
+        totalFilesCount += sub.files_count || 0
+        if (sub.files) {
+          sub.files.forEach(file => {
+            totalSize += file.size || 0
+          })
+        }
+      })
+      
       setStats({
-        totalFiles: data.length,
+        totalFiles: totalFilesCount,
         totalSize: (totalSize / 1024).toFixed(2)
       })
     } catch (error) {
@@ -101,20 +113,31 @@ export default function ManagePage() {
               </p>
             ) : (
               submissions.map((sub, index) => (
-                <div key={index} className="submission-card">
+                <div key={sub.id || index} className="submission-card">
                   <div className="submission-icon">
-                    <i className="fas fa-file-code"></i>
+                    <i className="fas fa-folder"></i>
                   </div>
                   <div className="submission-info">
-                    <h4>{sub.filename}</h4>
+                    <h4>{sub.assignment_name}</h4>
                     <p>
-                      <i className="fas fa-calendar"></i> {sub.timestamp || 'N/A'} | 
-                      <i className="fas fa-hdd"></i> {((sub.size || 0) / 1024).toFixed(2)} KB
+                      <i className="fas fa-users"></i> {sub.total_students || sub.files_count} student(s) | 
+                      <i className="fas fa-calendar"></i> {sub.timestamp} | 
+                      <i className="fas fa-check-circle"></i> {sub.status}
                     </p>
+                    {sub.files && sub.files.length > 0 && (
+                      <div style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#666' }}>
+                        <strong>Students:</strong><br/>
+                        {sub.files.map((f, idx) => (
+                          <div key={idx} style={{ marginLeft: '10px' }}>
+                            • {f.student_id || `Student ${idx + 1}`}: {f.filename}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <button 
                     className="delete-btn"
-                    onClick={() => handleDelete(sub.filename)}
+                    onClick={() => handleDelete(sub.id)}
                   >
                     <i className="fas fa-trash"></i>
                   </button>

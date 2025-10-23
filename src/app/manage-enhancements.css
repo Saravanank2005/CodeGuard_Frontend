@@ -1,0 +1,66 @@
+/* ===== ENHANCED MANAGE PAGE STYLING ===== */
+
+/* Better File Cards */
+.file-item,
+.submission-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.file-item:hover,
+.submission-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced Stats Cards */
+.stats-grid .stat-card {
+  min-height: 120px;
+  transition: all 0.3s ease;
+}
+
+.stats-grid .stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
+}
+
+/* Better Typography for Filenames */
+.file-name,
+.submission-details h4 {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #1e293b;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.file-info span,
+.submission-meta {
+  letter-spacing: 0.3px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Smooth Delete Button Animation */
+.delete-btn {
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.5);
+}
+
+/* Assignment Name Styling */
+.submission-details h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Status Badge Enhancement */
+.submission-status {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}

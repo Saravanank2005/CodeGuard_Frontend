@@ -1,39 +1,58 @@
 // src/lib/api.js
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
 
-export async function uploadFile(studentId, file) {
-  const formData = new FormData()
-  formData.append('student_id', studentId)
-  formData.append('file', file)
+// Helper function to get auth headers
+function getAuthHeaders() {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+  return token ? { 'Authorization': `Bearer ${token}` } : {}
+}
 
-  const res = await fetch(`${API_URL}/upload`, {
+export async function uploadFile(assignmentName, studentIds, files) {
+  const formData = new FormData()
+  formData.append('assignment_name', assignmentName)
+  formData.append('student_ids', studentIds)  // Comma-separated string
+  
+  // Append multiple files
+  if (Array.isArray(files)) {
+    files.forEach(file => {
+      formData.append('files', file)
+    })
+  } else {
+    formData.append('files', files)
+  }
+
+  const res = await fetch(`${API_URL}/api/submissions/upload`, {
     method: 'POST',
+    headers: getAuthHeaders(),
     body: formData,
   })
 
   if (!res.ok) {
-    throw new Error('Failed to upload file')
+    const error = await res.json().catch(() => ({}))
+    throw new Error(error.detail || 'Failed to upload files')
   }
 
   return res.json()
 }
 
 export async function getSubmissions() {
-  const res = await fetch(`${API_URL}/submissions`)
+  const res = await fetch(`${API_URL}/api/submissions`, {
+    headers: getAuthHeaders()
+  })
 
   if (!res.ok) {
     throw new Error('Failed to fetch submissions')
   }
 
   const data = await res.json()
-  // Backend returns {submissions: [...], count: ...}
-  // We only need the submissions array
-  return data.submissions || []
+  // Backend returns array of submissions
+  return Array.isArray(data) ? data : []
 }
 
-export async function deleteSubmission(filename) {
-  const res = await fetch(`${API_URL}/submissions/${filename}`, {
+export async function deleteSubmission(submissionId) {
+  const res = await fetch(`${API_URL}/api/submissions/${submissionId}`, {
     method: 'DELETE',
+    headers: getAuthHeaders()
   })
 
   if (!res.ok) {
@@ -44,7 +63,9 @@ export async function deleteSubmission(filename) {
 }
 
 export async function getStatistics() {
-  const res = await fetch(`${API_URL}/statistics`)
+  const res = await fetch(`${API_URL}/api/statistics`, {
+    headers: getAuthHeaders()
+  })
 
   if (res.status === 503) {
     // Model not available on backend - use mock endpoint

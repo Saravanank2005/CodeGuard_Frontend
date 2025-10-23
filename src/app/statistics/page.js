@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import { getStatistics } from '@/lib/api'
+import '../statistics-enhancements.css'
 
 export default function StatisticsPage() {
   const [stats, setStats] = useState(null)

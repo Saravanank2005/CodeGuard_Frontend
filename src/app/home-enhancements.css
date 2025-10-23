@@ -1,0 +1,201 @@
+/* ===== ENHANCED HOME PAGE STYLING ===== */
+
+/* Hero Section Improvements */
+.hero-section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main Title Enhancement */
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #e0e7ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+/* Hero Subtitle */
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+/* Feature Items - Glassmorphism */
+.feature-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item span {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+/* Upload Card Enhancement */
+.upload-card {
+  animation: slideUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+/* Input Field Styling */
+input[type="text"] {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+input[type="text"]::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* Button Enhancements */
+.primary-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.primary-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+}
+
+/* File Upload Area */
+.file-upload-label {
+  transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+  transform: scale(1.02);
+  border-color: rgba(102, 126, 234, 0.8);
+}
+
+.file-text {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* File Mapping Items */
+.file-mapping-item {
+  background: rgba(248, 250, 252, 0.8);
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.file-mapping-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.file-mapping-item input {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Results Display */
+.results-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading State */
+.loading-spinner {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
