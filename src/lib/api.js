@@ -1,6 +1,11 @@
 // src/lib/api.js
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
 
+// Debug: Log the API URL being used
+if (typeof window !== 'undefined') {
+  console.log('🔗 API_URL:', API_URL)
+}
+
 // Helper function to get auth headers
 function getAuthHeaders() {
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
@@ -10,6 +15,8 @@ function getAuthHeaders() {
 // ============= AUTHENTICATION FUNCTIONS =============
 
 export async function register(userData) {
+  console.log('📤 Registering to:', `${API_URL}/api/auth/register`)
+  
   const res = await fetch(`${API_URL}/api/auth/register`, {
     method: 'POST',
     headers: {
