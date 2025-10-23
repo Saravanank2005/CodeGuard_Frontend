@@ -7,6 +7,89 @@ function getAuthHeaders() {
   return token ? { 'Authorization': `Bearer ${token}` } : {}
 }
 
+// ============= AUTHENTICATION FUNCTIONS =============
+
+export async function register(userData) {
+  const res = await fetch(`${API_URL}/api/auth/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email: userData.email,
+      password: userData.password,
+      full_name: userData.fullName,
+      institution: userData.institution
+    }),
+  })
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}))
+    throw new Error(error.detail || 'Registration failed')
+  }
+
+  const data = await res.json()
+  
+  // Store token and user data
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('token', data.access_token)
+    localStorage.setItem('user', JSON.stringify(data.user))
+  }
+  
+  return data
+}
+
+export async function login(email, password) {
+  // FastAPI OAuth2PasswordRequestForm expects form data, not JSON
+  const formData = new URLSearchParams()
+  formData.append('username', email)  // OAuth2 uses 'username' field
+  formData.append('password', password)
+
+  const res = await fetch(`${API_URL}/api/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: formData,
+  })
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}))
+    throw new Error(error.detail || 'Login failed')
+  }
+
+  const data = await res.json()
+  
+  // Store token and user data
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('token', data.access_token)
+    localStorage.setItem('user', JSON.stringify(data.user))
+  }
+  
+  return data
+}
+
+export async function getCurrentUser() {
+  const res = await fetch(`${API_URL}/api/auth/me`, {
+    headers: getAuthHeaders()
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch user info')
+  }
+
+  return res.json()
+}
+
+export function logout() {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+  }
+}
+
+// ============= SUBMISSION FUNCTIONS =============
+
 export async function uploadFile(assignmentName, studentIds, files) {
   const formData = new FormData()
   formData.append('assignment_name', assignmentName)
