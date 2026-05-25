@@ -38,6 +38,12 @@ export default function Header() {
               Manage Files
             </Link>
             <Link 
+              href="/dashboard" 
+              className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}
+            >
+              Dashboard
+            </Link>
+            <Link 
               href="/statistics" 
               className={`nav-link ${pathname === '/statistics' ? 'active' : ''}`}
             >
@@ -56,9 +62,8 @@ export default function Header() {
               <span className="user-name">{user?.full_name}</span>
               <span className="user-email">{user?.email}</span>
             </div>
-            <button onClick={logout} className="logout-btn">
+            <button onClick={logout} className="logout-btn" title="Logout">
               <i className="fas fa-sign-out-alt"></i>
-              Logout
             </button>
           </div>
         ) : (

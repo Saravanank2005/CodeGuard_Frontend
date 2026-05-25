@@ -125,6 +125,34 @@ export async function uploadFile(assignmentName, studentIds, files) {
   return res.json()
 }
 
+/**
+ * Submit student codes by pasting (no file upload).
+ * @param {string} assignmentName
+ * @param {string} language  e.g. "py", "java", "c", "cpp", "js"
+ * @param {{ student_id: string, code: string }[]} students
+ */
+export async function pasteSubmit(assignmentName, language, students) {
+  const res = await fetch(`${API_URL}/api/submissions/paste`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...getAuthHeaders()
+    },
+    body: JSON.stringify({
+      assignment_name: assignmentName,
+      language,
+      students
+    })
+  })
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}))
+    throw new Error(error.detail || 'Failed to submit pasted code')
+  }
+
+  return res.json()
+}
+
 export async function getSubmissions() {
   const res = await fetch(`${API_URL}/api/submissions`, {
     headers: getAuthHeaders()

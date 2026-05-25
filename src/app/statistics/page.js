@@ -166,7 +166,7 @@ export default function StatisticsPage() {
               {!stats.similarities || stats.similarities.length === 0 ? (
                 <div className="empty-state">
                   <i className="fas fa-info-circle"></i>
-                  <p>No similarity data available yet. Upload at least 2 files to see comparisons.</p>
+                  <p>No analysis data available. Upload at least 2 files to start detecting plagiarism.</p>
                 </div>
               ) : (
                 <div className="similarities-list">
