@@ -161,13 +161,24 @@ export default function ManagePage() {
                     </div>
 
                     {sub.files && sub.files.length > 0 && (
-                      <div style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: '#666', paddingTop: '0.75rem', borderTop: '1px solid rgba(226, 232, 240, 0.4)' }}>
-                        <strong style={{ color: 'var(--dark)' }}>Students:</strong>
-                        {sub.files.map((f, idx) => (
-                          <div key={idx} style={{ marginLeft: '0', marginTop: '0.3rem', color: 'var(--gray)' }}>
-                            • {f.student_id || `Student ${idx + 1}`}: <code style={{ fontSize: '0.8rem', background: 'rgba(102, 126, 234, 0.08)', padding: '2px 6px', borderRadius: '4px' }}>{f.filename}</code>
-                          </div>
-                        ))}
+                      <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(226, 232, 240, 0.4)' }}>
+                        <div style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--dark)', marginBottom: '0.75rem' }}>
+                          <i className="fas fa-users" style={{ marginRight: '0.5rem' }} />
+                          Students:
+                        </div>
+                        <div style={{ display: 'grid', gap: '0.6rem' }}>
+                          {sub.files.map((f, idx) => (
+                            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--gray)', padding: '0.6rem', background: 'rgba(102, 126, 234, 0.04)', borderRadius: '8px' }}>
+                              <span style={{ fontWeight: '600', color: 'var(--primary)', minWidth: '50px' }}>
+                                {f.student_id || `Student ${idx + 1}`}
+                              </span>
+                              <span style={{ color: '#999' }}>→</span>
+                              <code style={{ fontSize: '0.82rem', background: 'rgba(102, 126, 234, 0.1)', padding: '4px 8px', borderRadius: '5px', fontFamily: 'monospace', color: 'var(--primary)', wordBreak: 'break-all' }}>
+                                {f.filename}
+                              </code>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
