@@ -1453,7 +1453,8 @@ body {
 
 .similarity-card:hover .student-box i {
   transform: scale(1.2);
-}opacity: 0.8
+  opacity: 0.8;
+}
 
 .comparison-arrow {
   display: flex;
