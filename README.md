@@ -1,28 +1,86 @@
-# CodeGuard Frontend
+# CodeGuard 🛡️
 
-CodeGuard is an intelligent, AI-powered code plagiarism detection system tailored to identify similarities in student programming assignments. This repository contains the Next.js frontend application, which serves as an intuitive, responsive, and real-time dashboard for educators and instructors to monitor academic integrity.
+**An AI-Powered Code Plagiarism Detection System for Educators and Institutions**
 
-## Project Summary 🎯
+CodeGuard is an advanced, intelligent platform that revolutionizes how academic integrity is maintained in programming courses. Using a sophisticated multi-algorithm machine learning pipeline, real-time code comparison, and interactive statistical dashboards, CodeGuard enables educators to easily detect code similarities and uncover sophisticated plagiarism attempts.
 
-CodeGuard automates the complex process of plagiarism detection by leveraging multiple algorithmic approaches. Rather than simply matching strings, it analyzes the lexical, structural, and semantic layers of the code. The frontend provides a seamless interface for instructors to bulk-upload assignments, view immediate similarity metrics, and dive deep into pair-wise comparisons to ensure fair and accurate evaluations.
+## 🌟 Key Features
 
-## Key Capabilities ⚡
+### For Educators & Instructors
+- 📂 **Bulk Code Analysis** - Upload multiple student code submissions simultaneously and run comprehensive batch comparisons.
+- 🧠 **Multi-Algorithm Detection** - Accurate analysis using Levenshtein, Sequence Matching, Cosine Similarity, and Jaccard Similarity.
+- 📊 **Risk Assessment** - Submissions are automatically classified into High, Medium, and Low risk brackets for quick triage.
+- 📈 **Interactive Dashboards** - Visualize similarity distributions, assignment-wise breakdowns, and top suspects rankings.
+- 📋 **Detailed Comparison Reports** - Side-by-side metric breakdowns (lexical, AST, semantic) for transparent, defensible grading.
+- 🔐 **Secure Authentication** - Robust JWT-based login and registration system protecting sensitive academic data.
+- 📥 **Exportable Analytics** - Download detailed reports in JSON/CSV formats for institutional record-keeping.
 
-- **Batch Analysis:** Upload multiple code files simultaneously and run comprehensive batch comparisons.
-- **Real-Time Insights:** Receive immediate similarity scores calculated via Levenshtein Distance, Sequence Matching, Cosine Similarity, and Jaccard Similarity.
-- **Risk Assessment:** Submissions are automatically classified into High, Medium, and Low risk brackets for quick triage.
-- **Interactive Dashboards:** Visualizations including statistical distributions, top suspects rankings, and assignment-wise breakdowns.
-- **Secure Authentication:** Robust JWT-based login and registration system protecting sensitive academic data.
+## 🛠️ Tech Stack
 
-## Technology Stack 💻
+**Frontend:** Next.js 15, React 19, Tailwind CSS  
+**Backend:** Python, FastAPI, Uvicorn  
+**Database:** MongoDB Atlas (Motor async driver)  
+**Machine Learning:** scikit-learn, python-Levenshtein  
+**Deployment:** Vercel (Frontend), Render (Backend)
 
-- **Framework:** Next.js 15 (React 19)
-- **Styling:** Tailwind CSS
-- **Deployment:** Vercel
-- **Integration:** Connects seamlessly to a Python/FastAPI backend powered by MongoDB.
+## 🚀 Live Demo
 
-## Support & Contact 📬
+**Experience CodeGuard now:**
+- **Website:** https://codeguard-frontend.vercel.app *(Replace with actual link if available)*
 
-For inquiries, support, or suggestions regarding this project, please reach out via email:
+**This is a demonstration project.** If you'd like to learn more about the implementation or discuss similar projects, feel free to contact us.
 
-**Email:** [saravanank20051012@gmail.com](mailto:saravanank20051012@gmail.com)
+## 🧠 Plagiarism Detection Engine
+
+CodeGuard utilizes a powerful 4-layered machine learning pipeline to detect even the most obfuscated code copying:
+- **Sequence Matching (30% Weight):** Identifies structural similarities and longest matching subsequences.
+- **TF-IDF + Cosine Similarity (30% Weight):** Vectorizes code to detect deep semantic similarity and n-gram overlap.
+- **Levenshtein Distance (20% Weight):** Measures character-level edit distance to catch exact and near-exact copies.
+- **Jaccard Similarity (20% Weight):** Computes token overlaps to remain robust against code reordering.
+
+## 🔐 Security
+
+- JWT-based authentication
+- Password encryption (bcrypt)
+- Secure CORS protection
+- Data privacy for student submissions
+
+## 📊 Analytics & Reporting
+
+- Real-time aggregated statistics across all assignments
+- Top-at-risk student pair identification
+- Historical trend tracking over the academic term
+- Similarity network graphs
+
+## ✨ What Makes CodeGuard Special
+
+- **Comprehensive Detection** - Replaces single-algorithm tools that miss variable renaming or structural changes.
+- **Real-Time Processing** - Capable of processing hundreds of submissions asynchronously in seconds.
+- **Actionable Insights** - Not just raw percentages; provides exact risk categories and deep-dive metric breakdowns.
+- **Professional Platform** - Clean, intuitive, modern interface built for non-technical educators.
+
+## 📧 Support & Suggestions
+
+Have suggestions or feedback? We'd love to hear from you!
+- **Email:** saravanank20051012@gmail.com
+- **Report Issues:** [GitHub Issues](https://github.com/Saravanank2005/CodeGuard_Frontend/issues)
+
+**Note:** For questions, feature requests, or collaboration opportunities, please contact us via email.
+
+## 📄 License
+
+ISC License - Personal Use Only
+
+## 🙏 Built With
+
+- Next.js & React
+- Python & FastAPI
+- scikit-learn
+- MongoDB
+- Tailwind CSS
+
+---
+
+**Made with ❤️ by the CodeGuard Team**
+
+[Report Issue](https://github.com/Saravanank2005/CodeGuard_Frontend/issues) • [Suggest Feature](mailto:saravanank20051012@gmail.com)
