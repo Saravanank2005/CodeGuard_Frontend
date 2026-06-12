@@ -1,4 +1,5 @@
 'use client'
+// v2.1 - UI/UX improvements with better loading animation and alignment
 
 import { Poppins } from 'next/font/google'
 import './globals.css'
