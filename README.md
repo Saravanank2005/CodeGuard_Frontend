@@ -26,7 +26,7 @@ CodeGuard is an advanced, intelligent platform that revolutionizes how academic 
 ## 🚀 Live Demo
 
 **Experience CodeGuard now:**
-- **Website:** https://code-guard-frontend-81ekx8kzl-sk26.vercel.app/
+- **Website:** https://code-guard-frontend-gray.vercel.app/
 **This is a demonstration project.** If you'd like to learn more about the implementation or discuss similar projects, feel free to contact us.
 
 ## 🧠 Plagiarism Detection Engine
